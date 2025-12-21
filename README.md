@@ -39,4 +39,4 @@
 	* imageurl - путь к изображению
 	* post-id - id поста
 	
-<img src="/Диаграмма.png" alt="Диаграмма" width="500" height="300">
+<img src="/Диаграмма.png" alt="Диаграмма" width="500">
