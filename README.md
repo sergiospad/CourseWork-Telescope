@@ -5,15 +5,15 @@
 ### SQL:
 В базе данных 5 сущностей:
 1. User - пользователь
-	*id
-	*username - логин
-	*firstname - имя
-	*lastname - фамилия
-	*email - почта
-	*bio - о себе
-	*avatar - путь к изображению пользователя
-	*password - пароль(закодирован)
-	*created-date - дата создания
+	* id
+	* username - логин
+	* firstname - имя
+	* lastname - фамилия
+	* email - почта
+	* bio - о себе
+	* avatar - путь к изображению пользователя
+	* password - пароль(закодирован)
+	* created-date - дата создания
 
 2. Post - пост
 	*id
