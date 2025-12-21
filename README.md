@@ -16,27 +16,27 @@
 	* created-date - дата создания
 
 2. Post - пост
-	*id
-	*title - заголовок
-	*caption - содержимое поста
-	*location - локация
-	*user_id - id автора поста
-	*created-date - дата создания
+	* id
+	* title - заголовок
+	* caption - содержимое поста
+	* location - локация
+	* user_id - id автора поста
+	* created-date - дата создания
 
 3. Comment - комментарий к посту
-	*id
-	*user_id - id комментатора
-	*message - содержимое комментария
-	*created-date - дата создания
-	*post-id - id поста
+	* id
+	* user_id - id комментатора
+	* message - содержимое комментария
+	* created-date - дата создания
+	* post-id - id поста
 
 4. likes-post - информация о лайкнувших пост
-	*user_id - id лайкнувшего
-	*post-id - id поста
+	* user_id - id лайкнувшего
+	* post-id - id поста
 
 5. image-model - информация об изображениях, прикрепленных к посту
-	*id
-	*imageurl - путь к изображению
-	*post-id - id поста
+	* id
+	* imageurl - путь к изображению
+	* post-id - id поста
 	
 ![Диаграмма](Диаграмма.png)
