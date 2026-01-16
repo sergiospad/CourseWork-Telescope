@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {CommentCreateDto} from '../DTO/comment/comment-create.dto';
 import {Observable} from 'rxjs';
 import {CommentShowDto} from '../DTO/comment/comment-show.dto';
+import {CommentEditDto} from '../DTO/comment/comment-edit.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,10 @@ export class CommentService{
 
   deleteComment(commentId:number):Observable<any>{
     return this.http.delete(this.commentAPI.build("delete", String(commentId)));
+  }
+
+  editComment(comment:CommentEditDto):Observable<CommentShowDto>{
+    return this.http.put<CommentShowDto>(this.commentAPI.build("edit"), comment);
   }
 
 }

@@ -8,6 +8,7 @@
 }
 
 .comment-field {
-  width: 100%;
+  width: 98%;
   margin-top: 0.5rem;
+  margin-left: 5px;
 }

@@ -4,8 +4,8 @@
       @for (comment of comments; track comment.id; let last = $last) {
         <app-comment-box [comment]="comment"
                          [allowedToDelete] = "allowedToDeleteComment"
-                         (deleteComment)="this.deleteComment.emit($event)">
-<!--                         [allowedToEdit] = "currentUser.id == comment.commentatorId"-->
+                         (deleteComment)="this.deleteComment.emit($event)"
+                         [allowedToEdit] = "currentUser.id == comment.commentatorId">
         </app-comment-box>
       }
     </div>

@@ -12,8 +12,8 @@
       <span class="comment-author">{{ comment.firstname }} {{ comment.lastname }}</span>
       @if (allowedToEdit){
         <button mat-icon-button
-                class="delete-comment"
-                (click)="this.deleteComment.emit(comment)">
+                class="edit-comment"
+                (click)="setActiveComment(comment)">
           <mat-icon>create</mat-icon>
         </button>
       }
@@ -26,11 +26,20 @@
       }
     </div>
     <span class="comment-date">{{ comment.creationDate | dateFormat }}</span>
-  </div>
 
+  </div>
+    @if (getActiveComment() && getActiveComment()==comment.id){
+      <mat-form-field class="comment-field" appearance="outline">
+        <input matInput
+               [(ngModel)]="comment.message"
+               (keyup.enter)="updateMessage(comment)">
+        <mat-hint align="end">{{ comment.message.length }}/128</mat-hint>
+      </mat-form-field>
+    }@else{
       <div class="comment-body">
         {{ comment.message }}
       </div>
+    }
 
   </div>
 </div>

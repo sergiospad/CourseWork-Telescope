@@ -9,6 +9,8 @@ import {MatIconButton} from '@angular/material/button';
 import {CommentService} from '../../../service/comment.service';
 import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CommentEditDto} from '../../../DTO/comment/comment-edit.dto';
+import {NotificationService} from '../../../service/notification-service';
 
 @Component({
   selector: 'app-comment-box',
@@ -20,7 +22,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatFormField,
     MatHint,
     MatInput,
-    MatLabel,
     ReactiveFormsModule,
     FormsModule
   ],
@@ -28,17 +29,37 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   styleUrl: './comment-box.component.css',
 })
 export class CommentBoxComponent {
-  readonly imageUploadService = inject(ImageUploadService);
-  readonly commentService = inject(CommentService)
+  protected readonly imageUploadService = inject(ImageUploadService);
+  private readonly commentService = inject(CommentService)
+  private readonly notificationService = inject(NotificationService);
+  private static activeComment:number|undefined;
   @Input() allowedToEdit!:boolean;
   @Input() allowedToDelete!:boolean;
   @Input() comment!:CommentShowDto;
-  editing = false;
   @Output() deleteComment = new EventEmitter<CommentShowDto>();
 
   protected readonly last = last;
 
-  public editComment(commentId:number){
-    this.editing = true;
+  public getActiveComment():number|undefined{
+    return CommentBoxComponent.activeComment;
   }
+
+  public setActiveComment(comment:CommentShowDto){
+    CommentBoxComponent.activeComment = comment.id;
+  }
+
+  public updateMessage(comment:CommentShowDto){
+    const newComment = {
+      id: comment.id,
+      message: comment.message
+    } as CommentEditDto;
+    CommentBoxComponent.activeComment = undefined;
+    this.commentService.editComment(newComment)
+      .subscribe(data=> {
+        this.notificationService.showSnackBar("Comment updated");
+        comment = data;
+      });
+  }
+
+
 }

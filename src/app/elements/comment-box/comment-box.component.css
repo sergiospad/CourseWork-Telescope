@@ -68,3 +68,16 @@
   transform: scale(0.4);
   width: 40px !important;
 }
+
+.edit-comment {
+  position: absolute;
+  right: 10px;
+  top: 16px;
+  transform: scale(0.4);
+  width: 40px !important;
+}
+
+.comment-field {
+  width: 90%;
+  margin-top: 0.5rem;
+}
