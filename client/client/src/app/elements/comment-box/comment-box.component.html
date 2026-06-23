@@ -1,0 +1,49 @@
+<div class="comment-item" [class.last-comment]="last">
+
+  <div class="comment-avatar">
+    <img [src]="this.imageUploadService.getAvatar(comment.commentatorId)"
+         alt="Avatar"
+         class="avatar-img">
+  </div>
+
+  <div class="comment-content">
+<div class="comment-header-date">
+    <div class="comment-header">
+      <span class="comment-author">{{ comment.firstname }} {{ comment.lastname }}</span>
+      @if (allowedToEdit){
+        <button mat-icon-button
+                class="edit-comment"
+                (click)="setActiveComment(comment)">
+          <mat-icon>create</mat-icon>
+        </button>
+      }
+      @if (allowedToDelete) {
+        <button mat-icon-button
+                class="delete-comment"
+                (click)="this.deleteComment.emit(comment)">
+          <mat-icon>clear</mat-icon>
+        </button>
+      }
+    </div>
+    <span class="comment-date">{{ comment.creationDate | dateFormat }}</span>
+
+  </div>
+    @if (getActiveComment() && getActiveComment()==comment.id){
+      <mat-form-field class="comment-field" appearance="outline">
+        <input matInput
+               [(ngModel)]="comment.message"
+               (keyup.enter)="updateMessage(comment)">
+        <mat-hint align="end">{{ comment.message.length }}/128</mat-hint>
+      </mat-form-field>
+    }@else{
+      <div class="comment-body">
+        {{ comment.message }}
+      </div>
+    }
+
+  </div>
+</div>
+
+@if (!last) {
+  <mat-divider class="comment-divider"></mat-divider>
+}
