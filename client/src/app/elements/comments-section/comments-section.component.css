@@ -1,0 +1,14 @@
+.comments-section {
+  margin-top: 16px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-field {
+  width: 98%;
+  margin-top: 0.5rem;
+  margin-left: 5px;
+}
